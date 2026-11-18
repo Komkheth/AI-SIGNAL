@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CART3R Sniper PRO</title>
+<style>
+:root{--bg:#07090e;--panel:#101620;--panel2:#0b111a;--line:#273244;--muted:#8491a5;--txt:#edf3fc;--red:#ff4058;--green:#19d6a0;--amber:#f5bd58;--blue:#71aaff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% -10%,#30121d 0,transparent 35%),var(--bg);color:var(--txt);font:14px/1.5 Inter,system-ui,Arial,sans-serif}
+header{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line);background:#080c13ed;position:sticky;top:0;z-index:3;backdrop-filter:blur(12px)}
+.brand{font-weight:900;letter-spacing:.8px}.brand b{color:var(--red)}.mark{display:inline-grid;place-items:center;width:34px;height:34px;margin-right:9px;border-radius:10px;background:linear-gradient(135deg,#ff4058,#7c1932);box-shadow:0 0 22px #ff405844;vertical-align:middle}
+.status{color:var(--green);font-size:11px;font-weight:800;letter-spacing:1px}.status:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:7px}
+main{max-width:1450px;margin:auto;padding:23px}.hero{display:flex;justify-content:space-between;align-items:end;margin:8px 0 20px;gap:16px}.eyebrow{font-size:10px;color:var(--red);font-weight:900;letter-spacing:2px}.hero h1{font-size:28px;margin:5px 0}.muted{color:var(--muted)}.chip{font-size:10px;padding:6px 10px;border:1px solid #63303a;background:#21121a;color:#ff8c99;border-radius:99px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:15px}.card{background:linear-gradient(145deg,#141c29,#0d131d);border:1px solid var(--line);border-radius:15px;padding:16px;min-width:0}.label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}.big{font-size:23px;font-weight:850;margin-top:5px}.tiny{font-size:11px;color:var(--muted)}.layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(320px,1fr);gap:15px}.head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:13px}.head h2{font-size:14px;margin:0}
+select,input{background:#090f18;border:1px solid #2a3547;color:var(--txt);border-radius:8px;padding:9px 10px;min-width:0}button{background:linear-gradient(135deg,#ff4058,#b91e40);border:0;color:white;border-radius:8px;padding:10px 13px;font-weight:800;cursor:pointer}button.alt{background:#202b3a;border:1px solid #33435a;color:#e6edf7}button:disabled{opacity:.45;cursor:not-allowed}
+.controls{display:flex;gap:7px;flex-wrap:wrap}.chart{height:405px;background:#080e17;border-radius:10px;overflow:hidden}.chart>div{height:100%}.tv{width:100%;height:100%}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:10px;color:var(--muted);margin-bottom:5px}.field input,.field select{width:100%}
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.level{background:#121b29;padding:9px;border-radius:8px;min-width:0}.level small{display:block;color:var(--muted);font-size:9px}.level b{font-size:13px;overflow-wrap:anywhere}
+.signal{background:#0b111a;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}.sigtitle{display:flex;justify-content:space-between;align-items:center}.badge{font-size:10px;font-weight:900;padding:4px 8px;border-radius:5px}.buy{background:#0b3429;color:#53edbd}.sell{background:#3c1621;color:#ff8797}.wait{background:#352b18;color:#ffd27a}.checklist{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}.check{padding:8px;background:#131c29;border-radius:7px;font-size:11px;color:#aab6c8}.check strong{color:var(--green);float:right}.check.pending strong{color:var(--amber)}
+.watchrow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #222d3c}.watchrow:last-child{border:0}.asset{font-weight:800}.asset small{display:block;font-size:10px;color:var(--muted);font-weight:500}
+.notice{background:#251d11;border:1px solid #5c4927;color:#e9ca86;border-radius:10px;padding:11px 13px;font-size:11px;margin-top:14px}
+footer{text-align:center;color:#667388;font-size:10px;padding:22px 0 8px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.chart{height:370px}}
+@media(max-width:560px){header{padding:0 13px}main{padding:14px}.hero{display:block}.hero h1{font-size:23px}.hero .chip{display:inline-block;margin-top:10px}.chart{height:330px}.grid2{grid-template-columns:1fr}.stats{gap:8px}.big{font-size:19px}}
+.news-item{padding:10px 0;border-bottom:1px solid #273244}.news-item:last-child{border:0}.news-item a{color:#edf3fc;text-decoration:none;font-weight:750}.news-item a:hover{color:#ff8797}.news-meta{font-size:10px;color:var(--muted);margin:4px 0}.chatlog{height:230px;overflow:auto;background:#080e17;border:1px solid #273244;border-radius:9px;padding:10px;margin:10px 0}.bubble{padding:9px 10px;border-radius:9px;margin:7px 0;max-width:95%;white-space:pre-wrap;font-size:12px}.bubble.user{background:#321724;margin-left:auto}.bubble.ai{background:#172333}.chatrow{display:flex;gap:7px}.chatrow input{flex:1;width:100%}
+</style></head>
+<body>
+<header><div class="brand"><span class="mark">⌁</span>CART3R <b>SNIPER PRO</b></div><div class="status" id="apiStatus">CONNECT API</div></header>
+<main>
+<section class="hero"><div><div class="eyebrow">ICT CONFLUENCE • MULTI-ASSET SCANNER</div><h1>Sniper Entry Command Center</h1><div class="muted">Liquidity sweep · FVG · Order Block · BOS / CHoCH · Telegram-ready alerts</div></div><span class="chip">ICT + NEWS + AI ASSISTANT</span></section>
+<section class="stats">
+ <div class="card"><div class="label">Markets covered</div><div class="big">3 classes</div><div class="tiny">Forex · Gold · BTCUSD</div></div>
+ <div class="card"><div class="label">Timeframes</div><div class="big">M1 / M5 / M15</div><div class="tiny">Entry and confirmation views</div></div>
+ <div class="card"><div class="label">Risk default</div><div class="big" id="riskTop">1.0%</div><div class="tiny" id="riskCashTop">$10.00 per $1,000</div></div>
+ <div class="card"><div class="label">Engine state</div><div class="big" style="color:var(--amber)" id="engineState">WAITING</div><div class="tiny">Connect your backend below</div></div>
+</section>
+<section class="layout">
+<div>
+ <div class="card">
+  <div class="head"><h2>MARKET CHART</h2><div class="controls"><select id="market"><option value="OANDA:EURUSD">EURUSD · Forex</option><option value="OANDA:GBPUSD">GBPUSD · Forex</option><option value="OANDA:USDJPY">USDJPY · Forex</option><option value="OANDA:XAUUSD">XAUUSD · Gold</option><option value="BITSTAMP:BTCUSD">BTCUSD · Bitcoin</option></select><select id="tf"><option value="1">M1</option><option value="5" selected>M5</option><option value="15">M15</option></select></div></div>
+  <div class="chart"><div id="tv_chart" class="tv"></div></div>
+  <div class="tiny" style="margin-top:8px">TradingView embedded chart. The chart display does not itself supply candle data to this site's strategy engine.</div>
+ </div>
+ <div class="card" style="margin-top:14px">
+  <div class="head"><h2>ICT SETUP CHECKLIST</h2><span class="badge wait">RULES TO VERIFY</span></div>
+  <div class="checklist">
+   <div class="check">Liquidity sweep <strong>✓</strong></div><div class="check">Displacement / BOS <strong>✓</strong></div>
+   <div class="check">Fair Value Gap <strong>✓</strong></div><div class="check">Order Block <strong>✓</strong></div>
+   <div class="check pending">Retest confirmation <strong>WAIT</strong></div><div class="check pending">Risk validation <strong>WAIT</strong></div>
+  </div>
+  <div class="tiny" style="margin-top:9px">Checklist is an illustrative strategy template, not a live detection result. Real detection must be computed from verified OHLC candles.</div>
+ </div>
+ <div class="card" style="margin-top:14px">
+  <div class="head"><h2>POSITION RISK CALCULATOR</h2><span class="tiny">Adjust balance and risk</span></div>
+  <div class="grid2">
+   <div class="field"><label>Account balance (USD)</label><input id="balance" type="number" min="1" value="1000"></div>
+   <div class="field"><label>Risk per trade (%)</label><input id="risk" type="number" min=".1" max="5" step=".1" value="1"></div>
+   <div class="field"><label>Entry price</label><input id="entry" type="number" step="any" placeholder="Enter price"></div>
+   <div class="field"><label>Stop loss price</label><input id="stop" type="number" step="any" placeholder="Enter price"></div>
+  </div>
+  <div class="levels"><div class="level"><small>RISK CASH</small><b id="cash">$10.00</b></div><div class="level"><small>PRICE DISTANCE</small><b id="dist">—</b></div><div class="level"><small>RAW UNITS*</small><b id="units">—</b></div></div>
+  <div class="tiny" style="margin-top:8px">*Raw units are only a rough estimate. Contract size, pip/tick value, leverage and quote-to-account currency conversion differ by broker and asset.</div>
+ </div>
+</div>
+<aside>
+ <div class="card">
+  <div class="head"><h2>SNIPER SIGNAL FEED</h2><span class="badge wait">DEMO ONLY</span></div>
+  <div id="feed"><div class="signal"><div class="sigtitle"><b>No confirmed setup</b><span class="badge wait">WAIT</span></div><p class="tiny">Waiting for sweep → displacement / BOS → FVG or OB retest → confirmation.</p><div class="levels"><div class="level"><small>ENTRY</small><b>—</b></div><div class="level"><small>STOP LOSS</small><b>—</b></div><div class="level"><small>TAKE PROFIT</small><b>—</b></div></div></div></div>
+  <div class="controls"><button id="demo">Preview demo signal</button><button class="alt" id="clear">Clear feed</button></div>
+  <p class="tiny">Demo values are fictional examples. They are not trade recommendations.</p>
+ </div>
+ <div class="card" style="margin-top:14px">
+  <div class="head"><h2>SUPPORTED MARKETS</h2><span class="tiny">Watchlist</span></div>
+  <div class="watchrow"><span class="asset">EURUSD<small>Forex major</small></span><span class="tiny">Chart available</span></div>
+  <div class="watchrow"><span class="asset">GBPUSD<small>Forex major</small></span><span class="tiny">Chart available</span></div>
+  <div class="watchrow"><span class="asset">USDJPY<small>Forex major</small></span><span class="tiny">Chart available</span></div>
+  <div class="watchrow"><span class="asset">XAUUSD<small>Gold</small></span><span class="tiny">Chart available</span></div>
+  <div class="watchrow"><span class="asset">BTCUSD<small>Bitcoin</small></span><span class="tiny">Chart available</span></div>
+ </div>
+ <div class="card" style="margin-top:14px">
+  <div class="head"><h2>LIVE MARKET NEWS</h2><span class="badge wait" id="newsState">NOT CONNECTED</span></div>
+  <div id="newsFeed"><p class="tiny">Connect the backend and add a Finnhub API key to load market headlines.</p></div>
+  <button class="alt" id="refreshNews">Refresh news</button>
+  <p class="tiny">Bias is a rough headline filter, not a verified prediction. Check the original source and economic calendar.</p>
+ </div>
+ <div class="card" style="margin-top:14px">
+  <div class="head"><h2>AI TRADING ASSISTANT</h2><span class="badge wait" id="aiState">NOT CONNECTED</span></div>
+  <div class="field"><label>Backend API URL</label><input id="apiBase" placeholder="https://your-api-host.example.com"></div>
+  <div class="tiny" style="margin-top:6px">Paste your deployed backend URL (no trailing slash), then connect.</div>
+  <div class="controls" style="margin-top:8px"><button id="connectApi">Connect backend</button></div>
+  <div class="chatlog" id="chatLog"><div class="bubble ai">CART3R AI: Ask me to explain current market news with ICT signals. Live answers require your server's OpenAI and Finnhub keys.</div></div>
+  <div class="chatrow"><input id="chatQuestion" placeholder="Ask about BTC news + ICT bias..."><button id="sendChat">Send</button></div>
+  <p class="tiny">AI explanations are educational, may be wrong, and are not trade instructions.</p>
+ </div>
+ <div class="card" style="margin-top:14px">
+  <div class="head"><h2>TELEGRAM ALERTS</h2><span class="badge wait">BACKEND REQUIRED</span></div>
+  <div class="field"><label>Alert integration</label><input value="Not connected — configure server endpoint" disabled></div>
+  <p class="tiny">Connect TradingView alert webhooks or your own signal engine to a secure server, then send Telegram messages server-side.</p>
+  <div class="notice">Keep bot tokens, exchange API keys and broker credentials on the server. Never expose secrets in this public website.</div>
+ </div>
+</aside></section>
+<div class="notice"><b>Important:</b> This package is a front-end dashboard, not a live AI prediction engine or auto-trader. Real-time signals require a reliable candle-data provider and a backend implementing and testing these rules. No orders are placed. Backtest and paper-trade before live use.</div>
+<footer>CART3R SNIPER PRO • v2.0 • Multi-asset UI starter • Educational use</footer>
+</main>
+<script>
+function chart(){const root=document.getElementById('tv_chart');root.innerHTML='';const s=document.createElement('script');s.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';s.async=true;s.innerHTML=JSON.stringify({autosize:true,symbol:document.getElementById('market').value,interval:document.getElementById('tf').value,timezone:'Etc/UTC',theme:'dark',style:'1',locale:'en',allow_symbol_change:true,calendar:false,hide_side_toolbar:false,details:true,hotlist:false,studies:[],support_host:'https://www.tradingview.com'});root.appendChild(s)}
+document.getElementById('market').addEventListener('change',chart);document.getElementById('tf').addEventListener('change',chart);chart();
+function calc(){let b=Math.max(0,+balance.value||0),r=Math.min(5,Math.max(0,+risk.value||0)),cash=b*r/100;document.getElementById('cash').textContent='$'+cash.toFixed(2);document.getElementById('riskTop').textContent=r.toFixed(1)+'%';document.getElementById('riskCashTop').textContent='$'+cash.toFixed(2)+' per $'+b.toFixed(0);let e=+entry.value,s=+stop.value;if(e>0&&s>0&&e!==s){let d=Math.abs(e-s);document.getElementById('dist').textContent=d.toPrecision(6);document.getElementById('units').textContent=Math.round(cash/d).toLocaleString()}else{document.getElementById('dist').textContent='—';document.getElementById('units').textContent='—'}}
+['balance','risk','entry','stop'].forEach(id=>document.getElementById(id).addEventListener('input',calc));calc();
+document.getElementById('demo').onclick=()=>{let sym=document.getElementById('market').selectedOptions[0].text.split(' · ')[0],tf='M'+document.getElementById('tf').value;document.getElementById('feed').innerHTML=`<div class="signal"><div class="sigtitle"><b>${sym} · ${tf}</b><span class="badge buy">BUY · DEMO</span></div><p class="tiny">Illustrative fictional setup. Not generated from live candles.</p><div class="levels"><div class="level"><small>ENTRY</small><b>100.00</b></div><div class="level"><small>STOP LOSS</small><b>99.50</b></div><div class="level"><small>TAKE PROFIT</small><b>101.00</b></div></div><div class="tiny" style="margin-top:10px">Example risk/reward: 1:2 • Verify all levels independently.</div></div>`};
+document.getElementById('clear').onclick=()=>{document.getElementById('feed').innerHTML='<div class="signal"><div class="sigtitle"><b>No confirmed setup</b><span class="badge wait">WAIT</span></div><p class="tiny">Feed cleared. Awaiting backend signal data.</p></div>'};
+
+let API_BASE='';
+const apiBaseEl=document.getElementById('apiBase');
+function apiUrl(path){return API_BASE+path}
+function chatBubble(text,who){const el=document.createElement('div');el.className='bubble '+who;el.textContent=text;document.getElementById('chatLog').appendChild(el);document.getElementById('chatLog').scrollTop=999999}
+async function connectBackend(){API_BASE=apiBaseEl.value.trim().replace(/\/$/,'');if(!API_BASE){alert('Enter your backend API URL first.');return}try{const r=await fetch(apiUrl('/health'));if(!r.ok)throw new Error('API returned '+r.status);const data=await r.json();document.getElementById('apiStatus').textContent='API ONLINE';document.getElementById('engineState').textContent=data.signal_engine||'ONLINE';await Promise.all([loadNews(),loadSignals()]);const c=await fetch(apiUrl('/api/config')).then(x=>x.json());document.getElementById('newsState').textContent=c.news_enabled?'LIVE':'ADD FINNHUB KEY';document.getElementById('aiState').textContent=c.ai_chat_enabled?'AI READY':'ADD OPENAI KEY';}catch(e){document.getElementById('apiStatus').textContent='API OFFLINE';chatBubble('Connection failed: '+e.message,'ai')}}
+async function loadNews(){if(!API_BASE)return;const box=document.getElementById('newsFeed');try{const r=await fetch(apiUrl('/api/news?category=general'));const d=await r.json();if(!d.enabled){box.textContent=d.message||'News feed not configured.';return}box.innerHTML='';(d.items||[]).slice(0,8).forEach(n=>{const row=document.createElement('div');row.className='news-item';const a=document.createElement('a');a.href=n.url||'#';a.target='_blank';a.rel='noopener';a.textContent=n.headline||'Market update';const meta=document.createElement('div');meta.className='news-meta';meta.textContent=(n.source||'News')+' · '+(n.bias||'MIXED')+' · '+(n.related||'Market');const summary=document.createElement('div');summary.className='tiny';summary.textContent=n.summary||'';row.append(a,meta,summary);box.appendChild(row)});if(!d.items?.length)box.textContent='No recent headlines returned.'}catch(e){box.textContent='News error: '+e.message}}
+async function loadSignals(){if(!API_BASE)return;try{const r=await fetch(apiUrl('/api/signals?limit=10'));const d=await r.json();if(!d.signals?.length)return;document.getElementById('feed').innerHTML='';d.signals.forEach(s=>{const el=document.createElement('div');el.className='signal';el.innerHTML=`<div class="sigtitle"><b>${s.symbol} · ${s.timeframe}</b><span class="badge ${s.direction==='BUY'?'buy':'sell'}">${s.direction}</span></div><p class="tiny">${s.reason||'ICT candidate'} · ${s.candle_time||''}</p><div class="levels"><div class="level"><small>ENTRY</small><b>${s.entry}</b></div><div class="level"><small>STOP LOSS</small><b>${s.stop_loss}</b></div><div class="level"><small>TAKE PROFIT</small><b>${s.take_profit}</b></div></div>`;document.getElementById('feed').appendChild(el)})}catch(e){console.warn(e)}}
+async function sendChat(){const q=document.getElementById('chatQuestion').value.trim();if(!q)return;if(!API_BASE){chatBubble('Connect the backend URL first.','ai');return}document.getElementById('chatQuestion').value='';chatBubble(q,'user');const symbol=document.getElementById('market').selectedOptions[0].text.split(' · ')[0];const tf=document.getElementById('tf').value+'m';try{const r=await fetch(apiUrl('/api/assistant/chat'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,symbol,timeframe:tf})});const d=await r.json();if(!r.ok)throw new Error(d.detail||'Assistant request failed');chatBubble(d.reply||'No response','ai')}catch(e){chatBubble('AI error: '+e.message,'ai')}}
+document.getElementById('connectApi').onclick=connectBackend;document.getElementById('refreshNews').onclick=loadNews;document.getElementById('sendChat').onclick=sendChat;document.getElementById('chatQuestion').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
+</script></body></html>
